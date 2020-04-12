@@ -10,8 +10,11 @@ class myprojectclass():
         self.stage = 'dev'
         self.version = 1.0
     
-    def do_something():
+    def do_something(self):
+        self.get_up()
         pass
 
-
+    
+    def get_up(self):
+        print('get up in the morning')
 ## 
