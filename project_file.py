@@ -3,6 +3,10 @@
 
 ## let's say our project is a basic class 
 
+## we want to simulate the things a boy do in one day
+## 1. get up in the morning
+## 2. 
+
 class myprojectclass():
     name = 'git_practice_project'
     def __init__(self,):

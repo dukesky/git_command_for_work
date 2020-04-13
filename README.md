@@ -36,24 +36,46 @@ After we change some code in local repository, we may want to update to github, 
 `git push origin master` to push to github master branch
 
 ## 4.backward and forward version in local and github
+we you have some committed your work several time, you may find something wrong and want to trace back to previous version, use `git checkout`
+
+``
+
+## 5.Clone a github project to local
 
 
+## 6.add new branch
 
-## 5.new branch
+to setup remote branch, we can use upstream, checkout to branch, and: \
+`git push -u origin branch` to push local branch to remote new branch with name "branch"
 
-## 6.merge branch to master in local and github
+## 7.merge branch to master in local and github
 
-## 7.merge a local clone repository to github branch/master
 
-## 8.status check commands
+### merge local branch to remote when remote master also change
+
+
+## 8.merge a local clone repository to github branch/master
+
+
+## status check commands
 ### check local status
-1. `git status` check what
-2. ``
+1. `git status` check which file has been changed since last commit (remember to save file before check)
+2. `git diff branch1..branch2` check difference between two branch : \
+3. `git log` show commit history `git log --oneline` show commit history each commit in one line (shorter version) \
+4. `git branch` check what branches are in local and which is current branch, `git branch -vv` for more details \
+
+
 ### check remote(github) status
 1. `git ls-remote` show all remote references (pointers)  
 2. `git remote show` show all remote branches
 
-## 9.status setup commands
+
+
+## status setup commands
 ### setup local 
+1. `git config --global alias.variablename "command you want to write down"` set git variable, then you can use it by `git variablename` 
 
 ### setup remote 
+1. `git push --set-upstream <remote> <branch>` or `git push -u <remote> <branch>` setup upstream branch
+2. `git checkout --track origin/branch` create a new local branch and link to existing remote branch (origin/branch)
+3. `fir branch -u <remote>/<branch>` link an existing local branch to remote branch (origin/branch)
