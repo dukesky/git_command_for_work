@@ -7,6 +7,10 @@
 ## 1. get up in the morning
 ## 2. 
 
+
+# timeline
+
+# create project --> (*) add get up function -->
 class myprojectclass():
     name = 'git_practice_project'
     def __init__(self,):
