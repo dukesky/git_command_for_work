@@ -1,5 +1,8 @@
 # Git and Github Practice on project use
 
+## why this?
+In my first work with git, I feel confused frequently. Even though I study some online course about git and github, and I believe I'm clear with basic git and github conception such as branch, merge, pull, push, remote, etc, problems keep coming up in real world use of git, expecially when I'm in charge of a production, which has multiple stages(production, dev, new_feature, etc), so I need to switch from stage to stage, from version to version to meet production and development requirement. So I thought why don't I conculde how to use git in practice and list some real world scenario that every software engineer may face in their work.  Hope it help me to clear my mind and help readers like you.
+
 ## 1.create a project in local PC and github
 To create a project, we need to create two parts: 
 1. local repository
@@ -36,35 +39,52 @@ After we change some code in local repository, we may want to update to github, 
 `git push origin master` to push to github master branch
 
 ## 4.backward and forward version in local and github
-we you have some committed your work several time, you may find something wrong and want to trace back to previous version, use `git checkout`
-
-``
+When you have committed your work several time, you may want to trace back to previous version, use `git checkout` \
+To go back to a specific previous step, can use `git log` to see previous commit record, and copy the [SHA-1] code, then use this code by: \
+`git checkout <SHA-1>`\
+To jump to step of this commit.
 
 ## 5.Clone a github project to local
+To clone a github repo to local, you can run:\
+`git clone https://github.com/user_name/repo_name.git` \
+If you want to clone a specific branch, you can run:\
+`git clone -branch <branch_name> https://github.com/user_name/repo_name.git`
 
+## 6.work with branch
+### create a new branch
+To create a new branch, simple with:\
+`git branch <new_branch_name>`
+Or you can go with:\
+`git checkout <new_branch_name>` \
+witch will create a new branch if git not detect the input branch name and switch to this branch
+### push branch to github
+When you have some work on a new branch, you may want to:
+#### 1.push existing branch to github
+This is easy, simply:\
+`git push <remote> <branch>`
+#### 2.push new branch to github
+This is the same as add a new branch to github. To setup remote branch, we can use upstream. First checkout to branch, and: \
+`git push -u <remote> <branch>` to push local branch to remote new branch with name <branch>
 
-## 6.add new branch
-
-
-## 7.push branch to github
-### 1.push existing branch to github
-
-### 2.push new branch to github
-to setup remote branch, we can use upstream, checkout to branch, and: \
-`git push -u origin branch` to push local branch to remote new branch with name "branch"
-
-### 3.push branch to another remote branch
+#### 3.push branch to another remote branch
 `git push <remote> <local_branch>:<remote_branch>`
+### delete branch
+If you want to delete a branch, use:\
+`git branch -d <branch_name>`
+If you want to delete remote branch:\
+`git push <remote> --delete <delete_branch_name>` 
 
-## 8.merge branch to master in local 
+
+
+## 7.merge branch to master in local 
 
 
 ### merge local branch to remote when remote master also change
 
 
-## 9.merge a local clone repository to github branch/master
+## 8.merge a local clone repository to github branch/master
 
-## 10.merge a local download repo to github (local don't share same commit history)
+## 9.merge a local download repo to github (local don't share same commit history)
 
 ## 10.branch change
 1. [Cherry-pick](https://git-scm.com/docs/git-cherry-pick)
@@ -114,3 +134,7 @@ Cherry-pick apply some change introduced by existing commits
 `fir branch -u <remote>/<branch>`
 4. delete remote branch\
 `git push origin --delete remoteBranchName`
+
+## reference
+[git document](https://git-scm.com/book/en/v2) official git guide
+[Bitbucket](https://www.atlassian.com/git/tutorials): It is a tutorial appeared frequently in my git search, it has clear guide and detail example to illustrate git problems if you don't want spend too much time on git document
