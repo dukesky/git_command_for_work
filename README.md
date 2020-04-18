@@ -77,7 +77,7 @@ If you want to delete remote branch:\
 
 
 ## 7.merge branch to master in local 
-
+After some work on new-branch, we need to merge our branch to master branch in order to keep the master in the newest track. First, we make sure our work on new-branch has been commited, then 
 
 ### merge local branch to remote when remote master also change
 
@@ -136,5 +136,5 @@ Cherry-pick apply some change introduced by existing commits
 `git push origin --delete remoteBranchName`
 
 ## reference
-[git document](https://git-scm.com/book/en/v2) official git guide
-[Bitbucket](https://www.atlassian.com/git/tutorials): It is a tutorial appeared frequently in my git search, it has clear guide and detail example to illustrate git problems if you don't want spend too much time on git document
+1. [git document](https://git-scm.com/book/en/v2) official git guide
+2. [Bitbucket](https://www.atlassian.com/git/tutorials): It is a tutorial appeared frequently in my git search, it has clear guide and detail example to illustrate git problems if you don't want spend too much time on git document

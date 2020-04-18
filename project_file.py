@@ -25,4 +25,25 @@ class myprojectclass():
     
     def get_up(self):
         print('get up in the morning')
+    
+    def wash_hand(self):
+        self.runing_water()
+        self.apply_sop()
+        self.scrub_hand()
+        self.rinse_hand()
+
+
+### sub-functions in wash_hand
+    def runing_water(self):
+        print('open tap, let water runing to both your hands.')
+        print('make sure hands have been full wet and close the tap.')
+
+    def apply_sop(self):
+        print('Lather your hands by rubbing them together with the soap.')
+
+    def scrub_had(self):
+        print('rub your hands for at least 20 seconds.')
+    
+    def rinse_hand(self):
+        print('nse your hands well under clean, running water.')
 ## 
