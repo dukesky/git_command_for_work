@@ -161,10 +161,12 @@ The difference between `git pull` and `git fetch` is that `git pull` directly up
 All in all, update by pull:\
 `git pull <remote> <branch>` 
 update by fetch:\
-``
+`git fetch`  \
+(test to decide if you need to update)
+`git merge <remote>/<branch>`
 
 ### 4. work on your's work in multiple PCs
-Same as work with teammate, if you work on multiple PCs, you need to use :\
+Same as work with teammate, if you work on multiple cPCs, you need to use :\
 `git pull` \ 
 each time you work on new PC to keep project up-to-date.
 
