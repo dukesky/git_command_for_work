@@ -94,6 +94,82 @@ Cherry-pick apply some change introduced by existing commits
 
 ## rebate
 
+## Some case example 
+### 1. work on a new project
+``` sh
+# create a new directory, and initialize it with git-specific functions
+git init my-repo
+
+# change into the `my-repo` directory
+cd my-repo
+
+# create the first file in the project
+touch README.md
+
+# git isn't aware of the file, stage it
+git add README.md
+
+# take a snapshot of the staging area
+git commit -m "add README to initial commit"
+
+# provide the path for the repository you created on github
+git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+
+# push changes to github
+git push --set-upstream origin master
+
+
+``` 
+you can write you project now!
+
+### 2. work on a existing project and make contribution on branch
+``` shell
+# download a repository on GitHub.com to our machine
+git clone https://github.com/user_name/project_name.git
+
+# change into the `repo` directory
+cd project_name
+
+# create a new branch to store any new changes
+git branch my-branch
+
+# switch to that branch (line of development)
+git checkout my-branch
+
+# make changes, for example, edit `file1.md` and `file2.md` using the text editor
+
+# stage the changed files
+git add file1.md file2.md
+
+# take a snapshot of the staging area (anything that's been added)
+git commit -m "my snapshot"
+
+# push changes to github
+git push --set-upstream origin my-branch
+```
+
+
+### 3. work with other teammate on same branch
+when work with your teammate on the same code, each time your start work, you should use: \
+`git pull` \
+to keep your local project up-to-date with your teammates work. Then, if there's conflict, fix them and continue work.
+
+#### some tips there：
+when you want to keep your local code update, you can use `git pull <remote> <branch>`
+however, there's always a better way to use `git fetch`.\
+The difference between `git pull` and `git fetch` is that `git pull` directly update your local code by remote repository code, however, `git fetch` will load the remote repositorry code, but not merge is to your local code, so it is like a middle step of update your code, after fetch you have some space the check the difference between local and remote code by `git diff <local_branch> <remote>/<remote_branch>`  and if you decide to update to remote version, just type `git merge <local_branch> <remote>/<remote branch>`\
+All in all, update by pull:\
+`git pull <remote> <branch>` 
+update by fetch:\
+``
+
+### 4. work on your's work in multiple PCs
+Same as work with teammate, if you work on multiple PCs, you need to use :\
+`git pull` \ 
+each time you work on new PC to keep project up-to-date.
+
+
+### 5. 
 
 
 ## status check commands
