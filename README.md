@@ -278,6 +278,9 @@ or we can use\
 `git rebase remotename/branchname`\
 takes new commits from the branch `branchname`, and inserts them "under" your changes. More precisely, it modifies the history of the current branch such that it is based on the tip of `branchname`, with any changes you made on top of that.
 
+### 4. a good example of multiple branch co-work together
+[Git branching basic branching and merging](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)\
+this also list ways to solve conflits when merging
 
 #### some tips there：
 when you want to keep your local code update, you can use `git pull <remote> <branch>`
