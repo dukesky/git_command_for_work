@@ -47,12 +47,46 @@ After we change some code in local repository, we may want to update to github, 
 `git push origin master` to push to github master branch
 
 ### backward and forward version in local and github
-When you have committed your work several time, you may want to trace back to previous version, use `git checkout` \
-To go back to a specific previous step, can use `git log` to see previous commit record, and copy the [SHA-1] code, then use this code by: \
-`git checkout <SHA-1>`\
-To jump to step of this commit.
+1. use `checkout`\
+When you have committed your work several time, you may want to trace back to previous version, use `git checkout` 
+to go back to a specific previous step.
+```sh
+# see previous commit record, and copy the [SHA-1] code
+git log
+# to jump to specific commit 
+git checkout <SHA-1>
+# to jump to prevous 2 steps before
+git checkout HEAD~2
+# or you can just change single file to previous stage by
+git checkout HEAD~2 foo.py
+```
 
+2. use `reset HEAD`
+```sh 
+# reset commit
+git reset HEAD~3
+# reset file
+git reset HEAD~2 foo.py
 
+```
+
+3. use `revert`\
+A revert is an operation that takes a specified commit and creates a new commit which inverses the specified commit. git revert can only be run at a commit level scope and has no file level functionality.
+![git-revert](./imgs/git-revert.png)
+
+A comparation of these three methods please see this blog [Resetting, Checking Out & Reverting](https://www.atlassian.com/git/tutorials/resetting-checking-out-and-reverting)
+
+The conclusion is:\
+Checkout and reset are generally used for making local or private 'undos'. They modify the history of a repository that can cause conflicts when pushing to remote shared repositories. Revert is considered a safe operation for 'public undos' as it creates new history which can be shared remotely and doesn't overwrite history remote team members may be dependent on.
+
+Command | Scope | Common use Case 
+-- | -- | -- 
+git reset|  Commit-level | Discard commits in a private branch or throw away uncommited changes
+git reset | File-level | Unstage a file
+git checkout | Commit-level | Switch between branches or inspect old snapshots
+git checkout | File-level | Discard changes in the working directory
+git revert | Commit-level | Undo commits in a public branch
+git revert | File-level | NA
 ## 3.branch
 ### create a new branch
 To create a new branch, simple with:\
@@ -81,18 +115,45 @@ If you want to delete remote branch:\
 
 ## 4.merge
 ### merge branch to master in local 
-After some work on new-branch, we need to merge our branch to master branch in order to keep the master in the newest track. First, we make sure our work on new-branch has been commited, then 
+After some work on new-branch, we need to merge our branch to master branch in order to keep the master in the newest track. First, we make sure our work on `new-branch` has been commited, then:
+```sh
+git checkout master
+git merge new-branch
+```
 
 ### merge local branch to remote when remote master also change
-
+```sh
+# checkout to the right local branch you want to push
+git checkout new-branch
+# push to the remote. 
+# If you are publishing a local branch for the first time(new branch) on a remote, the "-u" option is helpful. It makes sure that a tracking connection between the local and the newly created remote branch is established:
+git push -u <remotename> <branchname>
+```
 
 ### merge a local clone repository to github branch/master
+same as merge local branch to remote
 
-### merge a local download repo to github (local don't share same commit history)
+### merge a local download repo to github (refuseing to merge unredated histories)
 
-This problem sometimes happened when you restart a previous work 
+This problem sometimes happened when you restart a previous work last update long time ago or just download the whole repo from github and want to push to original remote repo, however you download it without generate git history log (you should actually use `git clone` to download and work).The log is like:
+```
+fatal: The current branch master has no upstream branch.
+To push the current branch and set the remote as upstream, use
+git push --set-upstream origin master
+```
+To solve this problem, you can simple use
+```sh
+git push/pull <remotename> <branchname> --allow-unrelated-hostories
+```
+But Why?\
+\
+To understand the reason, I find this [blog](https://www.educative.io/edpresso/the-fatal-refusing-to-merge-unrelated-histories-git-error). 
+![image of two repo](./imgs/git-two-repo.png)
+So basically, we are like working in two totally different project and aimed to merge this two without any shared branch together (or maybe they have mismatching commit history) As for me, the normal situation is **I have created a new repository (by download from the repo), and init the git repo, added a few commits to it, and  trying to pull/push from a remote repository that already has some commits of its own. Git will also throw the error in this case, since it has no idea how the two projects are related.**
+
 
 ### merge a remote branch to local repo
+use `git pull` or `git fetch` follow with `git rebase`, for detail please see Case Example 3
 
 ### branch change
 1. [Cherry-pick](https://git-scm.com/docs/git-cherry-pick)
@@ -100,10 +161,10 @@ Cherry-pick apply some change introduced by existing commits
 2. 
 
 
-## 5.rebate
-
-
-
+## 5.rebase
+`git rebase` Reapply commits on top of another base tip.\
+So it is good to use `git rebase` after `git fetch` when want to MUST apply new change in remote/branch (detail please see Case 3)
+`rebase` and `merge` are similar, please check this [blog](https://medium.com/datadriveninvestor/git-rebase-vs-merge-cc5199edd77c#:~:text=Rebasing%20and%20merging%20are%20both,branch%20but%20in%20different%20ways.&text=When%20you%20do%20rebase%20a,to%20master%20branch's%20ending%20point.&text=Merging%20adds%20a%20new%20commit%20to%20your%20history.) if you want more detail on this two commands
 
 ## 6.status
 ### check local status
@@ -239,3 +300,7 @@ git merge <remote>/<branch>
 
 
 ### 4. 
+
+
+## Thanks!
+:grinning:	
