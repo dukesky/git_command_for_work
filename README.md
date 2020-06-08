@@ -207,14 +207,20 @@ git push --set-upstream origin my-branch
 ```
 
 
-### 3. work with other teammate on same branch
-when work with your teammate on the same code, each time your start work, you should use: \
-`git pull` \
-to keep your local project up-to-date with your teammates work. Then, if there's conflict, fix them and continue work.
+### 3. work with other teammate/ update clone repo on same branch
+when work with your teammate on the same code, or your want to update the repo you clone from others, each time your start work, you should use: \
+`git fetch remotename` \
+To grabs all the new remote-tracking branches and tags without merging those changes into your own branches.\
+`git merge remotename/branchname`\
+this merge is merging a remote-tracking branch(i.e., a branch fetched from a remote repository)
+or we can use\
+`git rebase remotename/branchname`\
+takes new commits from the branch `branchname`, and inserts them "under" your changes. More precisely, it modifies the history of the current branch such that it is based on the tip of `branchname`, with any changes you made on top of that.
+
 
 #### some tips there：
 when you want to keep your local code update, you can use `git pull <remote> <branch>`
-however, there's always a better way to use `git fetch`.\
+however, there's always a better way to use `git fetch` with a `git merge <remote> <branch>`.\
 The difference between `git pull` and `git fetch` is that `git pull` directly update your local code by remote repository code, however, `git fetch` will load the remote repositorry code, but not merge is to your local code, so it is like a middle step of update your code, after fetch you have some space the check the difference between local and remote code by \
 `git diff <local_branch> <remote>/<remote_branch>`  \
 and if you decide to update to remote version, just type: \
@@ -230,12 +236,6 @@ git fetch
 git merge <remote>/<branch>
 ```
 
-### 4. work on your work in multiple PCs
-Same as work with teammate, if you work on multiple cPCs, you need to use :\
-`git pull` \
-or \
-`git fetch`\
-each time you work on new PC to keep project up-to-date.
 
 
-### 5. 
+### 4. 
