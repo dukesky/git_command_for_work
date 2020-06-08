@@ -72,7 +72,7 @@ git reset HEAD~2 foo.py
 
 3. use `revert`\
 A revert is an operation that takes a specified commit and creates a new commit which inverses the specified commit. git revert can only be run at a commit level scope and has no file level functionality.
-![git-revert](./imgs/git-revert.png)
+![git-revert](./imgs/git-revert.PNG)
 
 A comparation of these three methods please see this blog [Resetting, Checking Out & Reverting](https://www.atlassian.com/git/tutorials/resetting-checking-out-and-reverting)
 
@@ -148,7 +148,7 @@ git push/pull <remotename> <branchname> --allow-unrelated-hostories
 But Why?\
 \
 To understand the reason, I find this [blog](https://www.educative.io/edpresso/the-fatal-refusing-to-merge-unrelated-histories-git-error). 
-![image of two repo](./imgs/git-two-repo.png)
+![image of two repo](./imgs/git-two-repo.PNG)
 So basically, we are like working in two totally different project and aimed to merge this two without any shared branch together (or maybe they have mismatching commit history) As for me, the normal situation is **I have created a new repository (by download from the repo), and init the git repo, added a few commits to it, and  trying to pull/push from a remote repository that already has some commits of its own. Git will also throw the error in this case, since it has no idea how the two projects are related.**
 
 
