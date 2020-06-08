@@ -86,6 +86,8 @@ After some work on new-branch, we need to merge our branch to master branch in o
 
 ## 9.merge a local download repo to github (local don't share same commit history)
 
+This problem sometimes happened when you restart a previous work 
+
 ## 10.branch change
 1. [Cherry-pick](https://git-scm.com/docs/git-cherry-pick)
 Cherry-pick apply some change introduced by existing commits
@@ -123,7 +125,7 @@ git push --set-upstream origin master
 you can write you project now!
 
 ### 2. work on a existing project and make contribution on branch
-``` shell
+``` sh
 # download a repository on GitHub.com to our machine
 git clone https://github.com/user_name/project_name.git
 
@@ -165,9 +167,9 @@ update by fetch:\
 (test to decide if you need to update)
 `git merge <remote>/<branch>`
 
-### 4. work on your's work in multiple PCs
+### 4. work on your work in multiple PCs
 Same as work with teammate, if you work on multiple cPCs, you need to use :\
-`git pull` \ 
+`git pull` \
 each time you work on new PC to keep project up-to-date.
 
 
@@ -191,6 +193,8 @@ each time you work on new PC to keep project up-to-date.
 `git ls-remote` 
 2. show all remote branches \
 `git remote show`
+3. show specific branch information \
+`git remote show origin`
 
 
 
@@ -204,12 +208,12 @@ each time you work on new PC to keep project up-to-date.
 `git branch -d localBranchName`
 
 ### setup remote 
-1. setup upstream branch \ 
+1. setup upstream branch \
 `git push --set-upstream <remote> <branch>` or `git push -u <remote> <branch>` 
 2. create a new local branch and link to existing remote branch (origin/branch)\
 `git checkout --track origin/branch` 
 3. link an existing local branch to remote branch (origin/branch)\
-`fir branch -u <remote>/<branch>`
+`git branch -u <remote>/<branch>`
 4. delete remote branch\
 `git push origin --delete remoteBranchName`
 
