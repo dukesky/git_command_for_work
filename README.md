@@ -148,7 +148,7 @@ git push/pull <remotename> <branchname> --allow-unrelated-hostories
 But Why?\
 \
 To understand the reason, I find this [blog](https://www.educative.io/edpresso/the-fatal-refusing-to-merge-unrelated-histories-git-error). 
-![image of two repo](./imgs/git-two-repo.PNG)
+![image of two repo](./imgs/git-two-repo.PNG)\
 So basically, we are like working in two totally different project and aimed to merge this two without any shared branch together (or maybe they have mismatching commit history) As for me, the normal situation is **I have created a new repository (by download from the repo), and init the git repo, added a few commits to it, and  trying to pull/push from a remote repository that already has some commits of its own. Git will also throw the error in this case, since it has no idea how the two projects are related.**
 
 
@@ -302,7 +302,7 @@ git merge <remote>/<branch>
 
 
 
-### 4. 
+### 5. .git file been deleted by some reason so that git don't share same commit history with remote
 
 
 ## Thanks!
