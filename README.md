@@ -303,6 +303,41 @@ git merge <remote>/<branch>
 
 
 ### 5. .git file been deleted by some reason so that git don't share same commit history with remote
+Sometimes we may delete `.git` folder or some files from this folder by mistake, or init a new git repo from a new folder download from github. In both condition, our local commit history is different from remote commit history. When we finish commit to local git repo and want to push to remote, the error will appear: 
+
+
+```sh
+$ git push origin master
+> To https://github.com/USERNAME/REPOSITORY.git
+>  ! [rejected]        master -> master (non-fast-forward)
+> error: failed to push some refs to 'https://github.com/USERNAME/REPOSITORY.git'
+> To prevent you from losing history, non-fast-forward updates were rejected
+> Merge the remote changes (e.g. 'git pull') before pushing again.  See the
+> 'Note about fast-forwards' section of 'git push --help' for details.
+
+```
+To solve this problem, we need to fetch and merging the change on the remote branch by
+```sh
+$ git fetch origin
+# Fetches updates made to an online repository
+$ git merge origin YOUR_BRANCH_NAME
+# Merges updates made online with your local work
+
+```
+but sometimes a other error may occur:
+```sh
+$ git merge origin 
+merge: origin - not something we can merge
+```
+To solve this problem, we need to add `--allow-unrelated-histories` after `git merge`:
+```sh
+## first pull from remote to keep same commit
+$ git fetch origin
+$ git merge origin YOUR_BRANCH_NAME --allow-unrelated-histories
+## push your change to remote
+$ git push origin master
+```
+This problem is same as previous merging example
 
 
 ## Thanks!
