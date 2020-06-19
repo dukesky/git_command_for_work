@@ -207,7 +207,32 @@ So it is good to use `git rebase` after `git fetch` when want to MUST apply new 
 4. delete remote branch\
 `git push origin --delete remoteBranchName`
 
-## 8.reference
+## 8.gitignore
+After our work has been done, we will definitely happy to push our work to github, but we may want to only push part of the files to the github and left some file (large file, useless file, cache file) local, to only push part of file, we need to use `.gitignore` file, witch is located in the main folder
+
+```sh
+## a example of .gitignore
+
+# two ** means any folder
+**/.ipynotebook_checkpoints/
+
+# a '/' in the end means ignore all files in side the folder before '/'
+# if don't use '/', it will match both file and folder of the name
+doc/fortz/
+**/data/
+# ignore a only file
+.DS_Store
+
+## single * match 0->n characters, so can be used as *.py to ignore all .py files as an example
+**/logs/*.log
+# and can use a '!' to negate the file that would be ignored (which will be pushed to github)
+!donnotignore.log
+node_modules/
+```
+Useful concepts are `*`,`\`,`**`,`!`,`?`, most of which are listed in the upper example
+
+
+## 9.reference
 1. [git document](https://git-scm.com/book/en/v2) official git guide
 2. [Bitbucket](https://www.atlassian.com/git/tutorials): It is a tutorial appeared frequently in my git search, it has clear guide and detail example to illustrate git problems if you don't want spend too much time on git document
 
